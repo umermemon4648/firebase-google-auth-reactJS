@@ -1,17 +1,24 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { signInUserWithGoogle, signInUserWithFacebook, logOutUser } from '../actions/authAction'
 
 const Signin = () => {
-
+    const {user, isLoading, isAuthenticate, error} = useSelector((state)=> state.auth)
+    const dispatch = useDispatch()
 
     const googleLoginHandler = () =>{
-        alert("google")
+        dispatch(signInUserWithGoogle())
+        
+        // alert("google")
     }
-
+    
     const facebookLoginHandler = () =>{
-        alert("fb")
-
+        dispatch(signInUserWithFacebook())
+        // alert("fb")
     }
+    useEffect(() => {
+      console.log(user)
+  }, []);
   return (
     <>
       <button onClick={googleLoginHandler} type="submit">Google</button>
