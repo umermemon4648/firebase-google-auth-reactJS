@@ -14,12 +14,12 @@ const authSlice = createSlice({
             state.isLoading = true
             state.error = null
         },
-        loginSuccess: (state)=>{
+        loginSuccess: (state, action)=>{
             state.isAuthenticate = true
             state.isLoading = false
             state.user = action.payload
         },
-        loginFailure: (state)=>{
+        loginFailure: (state, action)=>{
             state.error = action.payload
             state.isLoading = false
             state.isAuthenticate = false
