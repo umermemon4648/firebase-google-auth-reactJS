@@ -36,8 +36,15 @@ export const signInUserWithFacebook = ()=> async(dispatch)=>{
         dispatch(loginFailure(error.message))
     }
 }
+// export const logOutUser = () => async(dispatch)=>{
+//          await signOut(auth)
+//     // await firebase.auth().signOut()
+//     dispatch(logout())
+// }
+
 export const logOutUser = () => async(dispatch)=>{
-         await signOut()
-    // await firebase.auth().signOut()
-    dispatch(logout())
+      auth.auth().signOut()
+        dispatch(logout())
+        console.log("Logout")
+// await firebase.auth().signOut()
 }

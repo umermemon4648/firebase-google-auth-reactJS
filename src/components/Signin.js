@@ -16,13 +16,27 @@ const Signin = () => {
         dispatch(signInUserWithFacebook())
         // alert("fb")
     }
+    const signOutHandler = () =>{
+      dispatch(logOutUser())
+      // alert("fb")
+  }
     useEffect(() => {
       console.log(user)
-  }, []);
+      googleLoginHandler()
+      facebookLoginHandler()
+      signOutHandler()
+  }, [dispatch]);
   return (
     <>
-      <button onClick={googleLoginHandler} type="submit">Google</button>
-      <button onClick={facebookLoginHandler} type="submit">Facebook</button>
+{!isAuthenticate? (
+  <>
+    <button onClick={googleLoginHandler} type="submit">Google</button>
+    <button onClick={facebookLoginHandler} type="submit">Facebook</button>
+  </>
+) : (
+  <button onClick={signOutHandler} type="submit">SignOut</button>
+)}
+      
     </>
   )
 }
